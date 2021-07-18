@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
     render({ :template => "calc_templates/multiply_form.html.erb"})
   end
 
-  # def division_form
-  #   render({ :template => "calc_templates/division_form.html.erb"})
-  # end  
+  def division_form
+    render({ :template => "calc_templates/division_form.html.erb"})
+  end  
 
   def addition
     @add_first_num = params.fetch("add_first_num").to_f
@@ -38,6 +38,14 @@ class ApplicationController < ActionController::Base
     @multiply_result = @multiply_first_num * @multiply_second_num
 
     render({ :template => "calc_templates/multiplication.html.erb"})
+  end
+
+  def division
+    @divide_first_num = params.fetch("divide_first_num").to_f
+    @divide_second_num = params.fetch("divide_second_num").to_f
+    @divide_result = @divide_first_num / @divide_second_num
+
+    render({ :template => "calc_templates/division.html.erb"})
   end
 
 end
